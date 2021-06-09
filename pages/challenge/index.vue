@@ -19,22 +19,32 @@
         <option>Other</option>
       </select>
     </label>
-
-    <fancy-card>
-      <template #title> FRA/FCO </template>
-      <template #block> FRA/FCO </template>
-      <template #header> Flight 23321123312 </template>
-      sadd saddsaasdsd saddsa
-    </fancy-card>
+    <offer-list :offers="offers"></offer-list>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
-import FancyCard from '~/components/base/fancy-card.vue'
+import { Component, Inject, Vue } from 'nuxt-property-decorator'
+import { OfferService } from '~/services/offer'
+import OfferList from '~/components/offers/list.vue'
+import { Offer } from '~/types/models/offer'
 
 @Component({
-  components: { FancyCard },
+  components: { OfferList },
 })
-export default class Challenge extends Vue {}
+export default class Challenge extends Vue {
+  async fetch() {
+    await this.loadOffers()
+  }
+
+  @Inject() $offerService!: OfferService
+
+  offers: Offer[] = []
+
+  private async loadOffers(){
+    console.log('LOADINGGG')
+    this.offers = await this.$offerService.getOffers()
+    console.log('FINISH', this.offers)
+  }
+}
 </script>
