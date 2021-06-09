@@ -1,3 +1,4 @@
+// FIXME remove this
 export default {
   path: '/api/flights',
   handler(req, res) {

@@ -1,26 +1,11 @@
+import { offers } from '../../test/mocks/offers'
+
+// TODO maybe add express for routing if I have some extra time
 export default {
   path: '/api/offers',
-  handler(req, res) {
-    const mock = [
-      {
-        '@LanguageCode': 'xx',
-        $: 'Frankfurt/Main International',
-      },
-      {
-        '@LanguageCode': 'de',
-        $: 'Frankfurt/Main International',
-      },
-      {
-        '@LanguageCode': 'ru',
-        $: 'Frankfurt/Main International',
-      },
-      {
-        '@LanguageCode': 'ko',
-        $: 'Frankfurt/Main International',
-      },
-    ]
+  handler(_req, res) {
     res.setHeader('Content-type', 'application/json')
     res.statusCode = 200
-    res.end(JSON.stringify(mock))
+    res.end(JSON.stringify(offers))
   },
 }
