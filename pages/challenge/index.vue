@@ -1,25 +1,21 @@
 <template>
-  <div class="container mx-auto">
-    <label class="block">
-      <span class="text-gray-700">What type of event is it?</span>
-      <select
-        class="
-          block
-          w-full
-          mt-1
-          rounded-md
-          bg-gray-100
-          border-transparent
-          focus:border-gray-500 focus:bg-white focus:ring-0
-        "
-      >
-        <option>Corporate event</option>
-        <option>Wedding</option>
-        <option>Birthday</option>
-        <option>Other</option>
-      </select>
-    </label>
-    <offer-list :offers="offers"></offer-list>
+  <div class="flex flex-col h-screen md:flex-row">
+    <div class="flex-none h-14 md:w-20 md:h-full">
+      <offer-filter
+        :filters="filtersFrom"
+        @select="(selected) => (from = selected)"
+      ></offer-filter>
+    </div>
+    <offer-list
+      :offers="filteredOffers"
+      class="flex-grow overflow-y-auto"
+    ></offer-list>
+    <div class="flex-none h-14 md:w-20 md:h-full">
+      <offer-filter
+        :filters="filtersTo"
+        @select="(selected) => (to = selected)"
+      ></offer-filter>
+    </div>
   </div>
 </template>
 
@@ -27,10 +23,11 @@
 import { Component, Inject, Vue } from 'nuxt-property-decorator'
 import { OfferService } from '~/services/offer'
 import OfferList from '~/components/offers/list.vue'
+import OfferFilter from '~/components/offers/filter.vue'
 import { Offer } from '~/types/models/offer'
 
 @Component({
-  components: { OfferList },
+  components: { OfferList, OfferFilter },
 })
 export default class Challenge extends Vue {
   async fetch() {
@@ -40,11 +37,37 @@ export default class Challenge extends Vue {
   @Inject() $offerService!: OfferService
 
   offers: Offer[] = []
+  from: string = ''
+  to: string = ''
 
-  private async loadOffers(){
-    console.log('LOADINGGG')
+  get filteredOffers() {
+    return this.offers.filter((offer) => this.checkFilter(offer))
+  }
+
+  // TODO maybe check and combine from/top filters
+  get filtersFrom(): string[] {
+    return this.offers.reduce(
+      (acc, offer) => [...new Set(acc), offer.origin],
+      [] as string[]
+    )
+  }
+
+  get filtersTo(): string[] {
+    return this.offers.reduce(
+      (acc, offer) => [...new Set(acc), offer.destination],
+      [] as string[]
+    )
+  }
+
+  private checkFilter(offer: Offer) {
+    return (
+      (this.from !== '' ? offer.origin === this.from : true) &&
+      (this.to !== '' ? offer.destination === this.to : true)
+    )
+  }
+
+  private async loadOffers() {
     this.offers = await this.$offerService.getOffers()
-    console.log('FINISH', this.offers)
   }
 }
 </script>

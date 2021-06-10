@@ -1,5 +1,12 @@
 # eurow-price-offer
 
+Tools:
+
+- NUXT
+- VUEJS TS
+- TAILWIND CSS
+
+
 ## Build Setup
 
 ```bash

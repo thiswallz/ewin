@@ -133,6 +133,19 @@ export const offers: Offer[] = [
     uuid: 'UUU0000005-b790715d-b2b8-4d23-ac27-d4e88c0e84af',
   },
   {
+    origin: 'USA',
+    destination: 'SPN',
+    departureDate: '2021-06-10',
+    returnDate: '2021-06-14',
+    seatAvailability: 4,
+    price: {
+      amount: 449,
+      currency: 'EUR',
+    },
+    offerType: 'BestPrice',
+    uuid: 'UUU0000008-b790715d-b2b8-4d23-ac27-d4e88c0e84af',
+  },
+  {
     origin: 'NED',
     destination: 'DUS',
     departureDate: '2021-07-04',

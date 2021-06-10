@@ -1,15 +1,5 @@
 <template>
-  <div
-    class="
-      max-w-md
-      mx-auto
-      bg-white
-      rounded-xl
-      shadow-md
-      overflow-hidden
-      md:max-w-2xl
-    "
-  >
+  <div class="bg-white bg-opacity-50 rounded-xl shadow-md overflow-hidden">
     <div class="md:flex">
       <div class="md:flex-shrink-0">
         <slot name="block" />

@@ -4,7 +4,10 @@
       <Logo />
       <h1 class="title">eurow-price-offer</h1>
       <div class="links">
-        <nuxt-link to="/challenge" class="button--green">
+        <nuxt-link
+          to="/challenge"
+          class="button--green text-white text-2xl w-80"
+        >
           Challenge !
         </nuxt-link>
       </div>
