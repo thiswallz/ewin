@@ -10,17 +10,7 @@
         >
           <slot name="title" />
         </div>
-        <div
-          class="
-            block
-            mt-1
-            text-lg
-            leading-tight
-            font-medium
-            text-black
-            hover:underline
-          "
-        >
+        <div class="block mt-1 text-4xl leading-tight font-medium text-black">
           <slot name="header" />
         </div>
         <p class="mt-2 text-gray-500">

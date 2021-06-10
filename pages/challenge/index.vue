@@ -1,20 +1,35 @@
 <template>
-  <div class="flex flex-col h-screen md:flex-row">
-    <div class="flex-none h-14 md:w-20 md:h-full">
-      <offer-filter
-        :filters="filtersFrom"
-        @select="(selected) => (from = selected)"
-      ></offer-filter>
-    </div>
-    <offer-list
-      :offers="filteredOffers"
-      class="flex-grow overflow-y-auto"
-    ></offer-list>
-    <div class="flex-none h-14 md:w-20 md:h-full">
-      <offer-filter
-        :filters="filtersTo"
-        @select="(selected) => (to = selected)"
-      ></offer-filter>
+  <div class="h-screen">
+    <h1 class="text-white text-center text-6xl p-4 font-semibold">OFFERS!</h1>
+    <div class="flex flex-col md:flex-row items-stretch">
+      <div class="w-full h-16 md:w-20 lg:w-40 md:h-full sticky top-0">
+        <offer-filter
+          :filters="filtersFrom"
+          @select="(selected) => (from = selected)"
+          >FROM
+        </offer-filter>
+      </div>
+      <div
+        class="
+          w-full
+          h-16
+          md:w-20
+          lg:w-40
+          md:h-full md:order-last
+          sticky
+          top-20
+        "
+      >
+        <offer-filter
+          :filters="filtersTo"
+          @select="(selected) => (to = selected)"
+          >TO</offer-filter
+        >
+      </div>
+      <offer-list
+        :offers="filteredOffers"
+        class="flex-grow overflow-y-auto"
+      ></offer-list>
     </div>
   </div>
 </template>
@@ -45,18 +60,16 @@ export default class Challenge extends Vue {
   }
 
   // TODO maybe check and combine from/top filters
-  get filtersFrom(): string[] {
-    return this.offers.reduce(
-      (acc, offer) => [...new Set(acc), offer.origin],
-      [] as string[]
-    )
+  get filtersFrom() {
+    return this.offers
+      .map((offer) => offer.origin)
+      .filter((value, index, self) => self.indexOf(value) === index)
   }
 
-  get filtersTo(): string[] {
-    return this.offers.reduce(
-      (acc, offer) => [...new Set(acc), offer.destination],
-      [] as string[]
-    )
+  get filtersTo() {
+    return this.offers
+      .map((offer) => offer.destination)
+      .filter((value, index, self) => self.indexOf(value) === index)
   }
 
   private checkFilter(offer: Offer) {

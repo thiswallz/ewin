@@ -2,28 +2,27 @@
   <div
     class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5"
   >
-    <fancy-card
+    <offer-item
       v-for="offer in offers"
       :key="`offer-${offer.uuid}`"
       :data-test-id="`offer-${offer.uuid}`"
-      class="h-36"
+      :offer="offer"
     >
-      <template #title> FRA/FCO </template>
-      <template #block> {{ offer.origin }} / {{ offer.destination }} </template>
-      <template #header> Flight 23321123312 </template>
-      sadd saddsaasdsd saddsa
-    </fancy-card>
+      <template #default="slotProps">
+        {{ slotProps.origin }} ----- {{ slotProps.destination }}
+      </template>
+    </offer-item>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import FancyCard from '~/components/base/fancy-card.vue'
+import OfferItem from '~/components/offers/item.vue'
 import { Offer } from '~/types/models/offer'
 
 @Component({
   name: 'OfferList',
-  components: { FancyCard },
+  components: { OfferItem },
 })
 export default class OfferList extends Vue {
   @Prop({ required: true }) offers!: Offer[]
