@@ -1,6 +1,14 @@
 <template>
   <div
-    class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5"
+    class="
+      grid
+      gap-4
+      grid-cols-1
+      md:grid-cols-2
+      xl:grid-cols-3
+      2xl:grid-cols-4
+      content-start
+    "
   >
     <offer-item
       v-for="offer in offers"
@@ -9,7 +17,7 @@
       :offer="offer"
     >
       <template #default="slotProps">
-        {{ slotProps.origin }} ----- {{ slotProps.destination }}
+        {{ slotProps.origin }}/{{ slotProps.destination }}
       </template>
     </offer-item>
   </div>

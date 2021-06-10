@@ -1,6 +1,12 @@
 <template>
   <div class="h-screen">
-    <h1 class="text-white text-center text-6xl p-4 font-semibold">OFFERS!</h1>
+    <h1 class="text-white text-center text-6xl p-4 font-semibold">
+      <img
+        class="w-20"
+        src="https://stafftraveler.com/img/airlines/tails/EW.png"
+      />
+      OFFERS!
+    </h1>
     <div class="flex flex-col md:flex-row items-stretch">
       <div class="w-full h-16 md:w-20 lg:w-40 md:h-full sticky top-0">
         <offer-filter

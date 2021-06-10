@@ -88,6 +88,8 @@ export default class OfferFilter extends Vue {
     this.selected = newFilter
     this.$emit('select', newFilter)
   }
+
+  // TODO dont show filters where is no data (?)
 }
 </script>
 <style lang="scss" scoped>

@@ -5,7 +5,9 @@
       <slot v-bind="offer" />
     </template>
     <template #header> {{ price }} </template>
-    {{ offer.departureDate }} {{ offer.returnDate }}
+    {{ offer.departureDate }}
+    <font-awesome-icon icon="exchange-alt" />
+    {{ offer.returnDate }}
   </fancy-card>
 </template>
 
@@ -23,7 +25,7 @@ export default class OfferItem extends Vue {
 
   get price() {
     // TODO depending on the currency return correct symbol / format ?
-    return `€ ${this.offer.price.amount}`
+    return `€${this.offer.price.amount}`
   }
 
   // TODO gettet or something to manage seat/seats words

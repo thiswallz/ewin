@@ -17,6 +17,32 @@ export const offers: Offer[] = [
   },
   {
     origin: 'FRA',
+    destination: 'ENG',
+    departureDate: '2021-06-02',
+    returnDate: '2021-06-04',
+    seatAvailability: 2,
+    price: {
+      amount: 34,
+      currency: 'EUR',
+    },
+    offerType: 'BestPrice',
+    uuid: '1SA00003-b790715d-b2b8-4d23-ac27-d4e88c0e84af',
+  },
+  {
+    origin: 'FRA',
+    destination: 'STG',
+    departureDate: '2021-06-13',
+    returnDate: '2021-06-14',
+    seatAvailability: 7,
+    price: {
+      amount: 45,
+      currency: 'EUR',
+    },
+    offerType: 'BestPrice',
+    uuid: '2SA00003-b790715d-b2b8-4d23-ac27-d4e88c0e84af',
+  },
+  {
+    origin: 'FRA',
     destination: 'ROM',
     departureDate: '2021-06-18',
     returnDate: '2021-06-22',
