@@ -5,6 +5,7 @@ Tools:
 - NUXT
 - VUEJS TS
 - TAILWIND CSS
+- Fortawesome 
 
 
 ## Build Setup
@@ -20,8 +21,8 @@ $ yarn dev
 $ yarn build
 $ yarn start
 
-# generate static project
-$ yarn generate
+# TESTS 
+$ yarn test:unit
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

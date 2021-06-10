@@ -31,14 +31,14 @@ describe('Offer > Filter', () => {
       propsData: { ...mountOptions.propsData, filters: [] },
     })
     const list = wrapper.findAll(
-      `[data-test-id="filter-group"] > div[data-test-id^="filter-"]`
+      `[data-test-id="filter-group"] *[data-test-id^="filter-"]`
     )
     expect(list.length).toBe(0)
   })
 
   test('should show the filters list', () => {
     const list = wrapper.findAll(
-      `[data-test-id="filter-group"] > div[data-test-id^="filter-"]`
+      `[data-test-id="filter-group"] *[data-test-id^="filter-"]`
     )
     expect(list.length).toBe(filters.length)
   })
